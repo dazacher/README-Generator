@@ -1,0 +1,24 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "README Generator allows the coder to generate README files automatically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dazacher/README-Generator.git"
+  },
+  "author": "Dee Ann Scanniello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dazacher/README-Generator/issues"
+  },
+  "homepage": "https://github.com/dazacher/README-Generator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0",
+    "util": "^0.12.2"
+  }
+}
