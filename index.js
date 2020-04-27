@@ -83,8 +83,6 @@ function userPrompt() {
                     // console.log(response.data)
                     const avatar = response.data.owner.avatar_url;
 
-
-
                     const queryURL = `https://api.github.com/users/${answers.githubUserName}`
                     return axios
                         .get(queryURL)
@@ -99,42 +97,31 @@ function userPrompt() {
         })
 }
 
-// function generateTableOfContents() {
-//     return '
-//     * The generated README includes the following sections: 
-//     * Title
-//     * Description
-//     * Table of Contents
-//     * Installation
-//     * Usage
-//     * License
-//     * Contributing
-//     * Tests
-//     * Questions';
-// }
 
 function generateReadMe(answers) {
     console.log(answers)
-    return `
-    ${answers.title}
-    ${answers.description}
-    ${answers.picture === "Yes" ? `![Image](${answers.avatar})`: ""}
-
+    return`
     * Table of Contents
     * Installation
     * Usage
     * License
     * Contributing
     * Tests
+    
+    The author of this project is: ${answers.author}
+    ${answers.title}
+    ${answers.description}
+    Install the project by doing the following: ${answers.installation}
+    Usage: ${answers.usage}
+    License: ${answers.license}
+    Contributing: ${answers.contributing}
+    Tests: ${answers.tests}
+    ${answers.picture === "Yes" ? `![profile_image](${answers.avatar})`: ""}
+    ${answers.email === "Yes" ? `${answers.email}`: ""}
         `;
 }
 // /github/package-json/v/:user/:repo
 userPrompt()
-    .then(function (answers) {
-        // console.log(answers);
-        // const readMe = generateReadMe(answers)
-       
-    })
     .then(function () {
         console.log("Successfully wrote to README.md");
     })
