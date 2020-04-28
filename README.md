@@ -1,5 +1,5 @@
 
-    ## Table
+    #### Table
     * Table of Contents
     * [Author](#author)
     * [title](#title)
@@ -9,42 +9,51 @@
     * License
     * Contributing
     * Tests
+    * Questions
+        * Due you want your profile picture?
+        * Due you want your GitHub email?
     
-    ## Author
+    #### Author
 
-    The author of this project is: undefined
+    The author of this project is: Dee Ann Scanniello
 
-    ## Title
+    #### Title
 
-    undefined
+    README-Generator
 
-    ## Decription
+    #### Decription
 
-    undefined
+    skdjflaksfjsklfjslkfj
 
-    ## Installation
+    #### Installation
 
-    Install the project by doing the following: undefined
+    Install the project by doing the following: npm install
 
-    ## Usage
+    #### Usage
 
-    Usage: undefined
+    Usage: n/a
 
-    ## License
+    #### License
 
-    License: undefined
+    License: APACHE 2.0
 
-    ## Contributing
+    #### Contributing
 
-    Contributing: undefined
+    Contributing: n/a
 
-    ## Tests
+    #### Tests
 
-    Tests: undefined
+    Tests: n/a
 
-    
+    #### Picture
 
-    
+    <img src="https://avatars3.githubusercontent.com/u/61209724?v=4"/>
+
+    #### Email
+
+    Yes
+
+    #### Badge
 
     Badge: undefined
         

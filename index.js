@@ -4,7 +4,8 @@ const util = require("util");
 const axios = require("axios");
 
 const writeFileAsync = util.promisify(fs.writeFile);
-
+const answers = {};
+const { author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName } = answers;
 function userPrompt() {
     return inquirer
         .prompt([
@@ -81,8 +82,11 @@ function userPrompt() {
                 name: "githubUserName",
                 message: "What is your GitHub user name?"
             }
+
         ])
+
         .then(function (answers) {
+
             const queryAvatarURL = `https://api.github.com/repos/${answers.githubUserName}/${answers.title}`;
 
             return axios
@@ -90,11 +94,12 @@ function userPrompt() {
                 .then(function (responseAvatar) {
                     // console.log(responseAvatar.data)
                     const avatar = responseAvatar.data.owner.avatar_url;
+                    console.log(avatar);
                     // /github/package-json/v/:user/:repo
 
 
                     // Get the email address
-                    // const queryEmailURL = `https://api.github.com/${answers.githubUserName}/emails`
+                    const queryEmailURL = `https://api.github.com/${answers.githubUserName}/emails`
                     // return axios
                     //     .get(queryEmailURL)
                     //     .then(function (responseEmail) {
@@ -104,33 +109,30 @@ function userPrompt() {
                     // return {email, ...answers};
 
                     // Get the badge for the License
-                    // const queryBadgeURL = `[![GitHub license](https://img.shields.io/badge/license-${answers.license}-brightgreen.svg)](https://api.github.com/${answers.githubUserName}/${answers.project})`
+                    // const queryBadgeURL = `[![GitHub license](https://img.shields.io/badge/license-${answers.license}-brightgreen.svg)](https://api.github.com/${githubUserName}/${project})`
 
-                    // const queryBadgeURL = `[![GitHub badge]https://img.shields.io/badge/github/package-json/v/${answers.githubUserName}/${answers.title}`
+                    // const queryBadgeURL = `[![GitHub badge]https://img.shields.io/badge/github/package-json/v/${githubUserName}/${title}`
                     // return axios
                     //     .get(queryBadgeURL)
                     //     .then(function (responseBadge) {
 
                     //         console.log(responseBadge);
-                    //         const badge = responseBadge.data.config.url;
-                    //         console.log(badge);
+                    // const badge = responseBadge.data.config.url;
+                    // console.log(badge);
+                    // return { avatar, email, badge, ...answers };
                     return { avatar, ...answers };
-
-                    // return {badge, ...answers};
-
-                    // })
-
-                    // })
                 })
+
         })
 }
-//         )
+// )
+//         })
 // }
 
 function generateReadMe(answers) {
-    // console.log(answers)
+    console.log(answers)
     return `
-    ## Table
+    #### Table
     * Table of Contents
     * [Author](#author)
     * [title](#title)
@@ -140,42 +142,51 @@ function generateReadMe(answers) {
     * License
     * Contributing
     * Tests
+    * Questions
+        * Due you want your profile picture?
+        * Due you want your GitHub email?
     
-    ## Author
+    #### Author
 
     The author of this project is: ${answers.author}
 
-    ## Title
+    #### Title
 
     ${answers.title}
 
-    ## Decription
+    #### Decription
 
     ${answers.description}
 
-    ## Installation
+    #### Installation
 
     Install the project by doing the following: ${answers.installation}
 
-    ## Usage
+    #### Usage
 
     Usage: ${answers.usage}
 
-    ## License
+    #### License
 
     License: ${answers.license}
 
-    ## Contributing
+    #### Contributing
 
     Contributing: ${answers.contributing}
 
-    ## Tests
+    #### Tests
 
     Tests: ${answers.tests}
 
-    ${answers.picture === "Yes" ? `![profile_image](${answers.avatar})` : ""}
+    #### Picture
+
+    ${answers.picture === "Yes" ? `<img src="${answers.avatar}"/>` : ""}
+
+    #### Email
 
     ${answers.email === "Yes" ? `${answers.email}` : ""}
+
+    #### Badge
 
     Badge: ${answers.badge}
         `;
@@ -183,8 +194,9 @@ function generateReadMe(answers) {
 
 userPrompt()
     .then(function (answers) {
-        const readMe = generateReadMe({ answers })
-        writeFileAsync("README.md", readMe);
+        const readMe = generateReadMe(answers)
+        
+        return writeFileAsync("README.md", readMe);
     })
     .then(function () {
         console.log("Successfully wrote to README.md");
