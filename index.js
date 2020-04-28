@@ -105,12 +105,12 @@ function userPrompt() {
                     //     .then(function (responseEmail) {
                     // const email = responseEmail.data.email;
                     // console.log(responseEmail.data);
-                    // const email = responseEmail.data[0].actor.avatar_url;
-                    // return {email, ...answers};
+                    // const emailAddress = responseEmail.data[0].actor.avatar_url;
+                    // return {emailAddress, ...answers};
 
                     // Get the badge for the License
                     // const queryBadgeURL = `[![GitHub license](https://img.shields.io/badge/license-${answers.license}-brightgreen.svg)](https://api.github.com/${githubUserName}/${project})`
-
+                    
                     // const queryBadgeURL = `[![GitHub badge]https://img.shields.io/badge/github/package-json/v/${githubUserName}/${title}`
                     // return axios
                     //     .get(queryBadgeURL)
@@ -146,49 +146,50 @@ function generateReadMe(answers) {
         * Due you want your profile picture?
         * Due you want your GitHub email?
     
-    #### Author
+    ### Author
 
     The author of this project is: ${answers.author}
 
-    #### Title
+    ### Title
 
     ${answers.title}
 
-    #### Decription
+    ### Decription
 
     ${answers.description}
 
-    #### Installation
+    ### Installation
 
     Install the project by doing the following: ${answers.installation}
 
-    #### Usage
+    ### Usage
 
     Usage: ${answers.usage}
 
-    #### License
+    ### License
 
     License: ${answers.license}
 
-    #### Contributing
+    ### Contributing
 
     Contributing: ${answers.contributing}
 
-    #### Tests
+    ### Tests
 
     Tests: ${answers.tests}
 
-    #### Picture
+    ### Picture
 
     ${answers.picture === "Yes" ? `<img src="${answers.avatar}"/>` : ""}
 
-    #### Email
+    ### Email
 
-    ${answers.email === "Yes" ? `${answers.email}` : ""}
+    ${answers.email === "Yes" ? `${answers.emailAddress}` : ""}
 
-    #### Badge
+    ### Badge
 
-    Badge: ${answers.badge}
+    Badge: [![GitHub license](https://img.shields.io/badge/license-${answers.license}-brightgreen.svg)](https://api.github.com/${answers.githubUserName}/${answers.project})
+
         `;
 }
 

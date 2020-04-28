@@ -13,47 +13,48 @@
         * Due you want your profile picture?
         * Due you want your GitHub email?
     
-    #### Author
+    ### Author
 
     The author of this project is: Dee Ann Scanniello
 
-    #### Title
+    ### Title
 
     README-Generator
 
-    #### Decription
+    ### Decription
 
-    skdjflaksfjsklfjslkfj
+    klsdfjklsfjslkfjskdlfjs
 
-    #### Installation
+    ### Installation
 
     Install the project by doing the following: npm install
 
-    #### Usage
+    ### Usage
 
     Usage: n/a
 
-    #### License
+    ### License
 
     License: APACHE 2.0
 
-    #### Contributing
+    ### Contributing
 
     Contributing: n/a
 
-    #### Tests
+    ### Tests
 
     Tests: n/a
 
-    #### Picture
+    ### Picture
 
     <img src="https://avatars3.githubusercontent.com/u/61209724?v=4"/>
 
-    #### Email
+    ### Email
 
-    Yes
+    undefined
 
-    #### Badge
+    ### Badge
 
-    Badge: undefined
+    Badge: [![GitHub license](https://img.shields.io/badge/license-APACHE 2.0-brightgreen.svg)](https://api.github.com/dazacher/undefined)
+
         
