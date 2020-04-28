@@ -104,12 +104,12 @@ function userPrompt() {
                     //         console.log(responseBadge.data)
                     //     })
                     // Get the email address
-                    const queryEmailURL = `curl -u dazacher https://api.github.com/${answers.githubUserName}/emails`
-                    return axios
-                        .get(queryEmailURL)
-                        .then(function (responseEmail) {
+                    // const queryEmailURL = `curl -i https://api.github.com/${answers.githubUserName}/emails -u dazacher:St@rburst7756`
+                    // return axios
+                    //     .get(queryEmailURL)
+                    //     .then(function (responseEmail) {
                     //         const email = responseEmail.data.email;
-                            console.log(responseEmail.data);
+                            // console.log(responseEmail.data);
                     //         const emailAddress = responseEmail.data[0].actor.avatar_url;
                     // return {emailAddress, ...answers};
 
@@ -119,8 +119,9 @@ function userPrompt() {
                 })
 
         })
-})
 }
+// )
+// }
 
 function generateReadMe(answers) {
     // console.log(answers)
@@ -188,7 +189,7 @@ userPrompt()
     .then(function (answers) {
         const readMe = generateReadMe(answers)
 
-        // return writeFileAsync("README.md", readMe);
+        return writeFileAsync("README.md", readMe);
     })
     .then(function () {
         console.log("Successfully wrote to README.md");
