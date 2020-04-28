@@ -77,22 +77,35 @@ function userPrompt() {
         .then(function (answers) {
             const queryNameTitleURL = `https://api.github.com/repos/${answers.githubUserName}/${answers.title}`;
 
-            return axios
-                .get(queryNameTitleURL)
-                .then(function (response) {
+            // return axios
+            //     .get(queryNameTitleURL)
+            //     .then(function (response) {
                     // console.log(response.data)
-                    const avatar = response.data.owner.avatar_url;
+                    // const avatar = response.data.owner.avatar_url;
+                    // /github/package-json/v/:user/:repo
 
-                    const queryURL = `https://api.github.com/users/${answers.githubUserName}`
+                    const queryEmailURL = `https://api.github.com/users/${answers.githubUserName}/events/public`
                     return axios
-                        .get(queryURL)
-                        .then(function (response2) {
-                            const email = response2.data.email;
-                            console.log(response2.data);
+                        .get(queryEmailURL)
+                        .then(function (responseEmail) {
+                            // const email = responseEmail.data.email;
+                            console.log(responseEmail.data);
+                            const avatar = responseEmail.data[0].actor.avatar_url;
+                            // const queryBadgeURL = `[![GitHub license](https://img.shields.io/badge/license-${answers.license}-blue.svg)](https://github.com/${answers.githubUserName}/${answers.project})`
 
-                            const readMe = generateReadMe({ ...answers, email, avatar })
-                            writeFileAsync("README.md", readMe);
-                        })
+                            // const queryBadgeURL = `https://img.shields.io/badge/github/package-json/v/${answers.githubUserName}/${answers.title}`
+                            // return axios
+                            //     .get(queryBadgeURL)
+                            //     .then(function (response3) {
+
+                            //         console.log(response3);
+                                    // const badge = response3.data[0].config.url;
+
+                                    const readMe = generateReadMe({ ...answers, avatar })
+                                    writeFileAsync("README.md", readMe);
+                                // })
+
+                        // })
                 })
         })
 }
@@ -100,8 +113,11 @@ function userPrompt() {
 
 function generateReadMe(answers) {
     console.log(answers)
-    return`
+    return `
     * Table of Contents
+    * Author
+    * Title
+    * Description
     * Installation
     * Usage
     * License
@@ -109,18 +125,29 @@ function generateReadMe(answers) {
     * Tests
     
     The author of this project is: ${answers.author}
+
     ${answers.title}
+
     ${answers.description}
+
     Install the project by doing the following: ${answers.installation}
+
     Usage: ${answers.usage}
+
     License: ${answers.license}
+
     Contributing: ${answers.contributing}
+
     Tests: ${answers.tests}
-    ${answers.picture === "Yes" ? `![profile_image](${answers.avatar})`: ""}
-    ${answers.email === "Yes" ? `${answers.email}`: ""}
+
+    ${answers.picture === "Yes" ? `![profile_image](${answers.avatar})` : ""}
+
+    ${answers.email === "Yes" ? `${answers.email}` : ""}
+
+    Badge: ${answers.badge}
         `;
 }
-// /github/package-json/v/:user/:repo
+
 userPrompt()
     .then(function () {
         console.log("Successfully wrote to README.md");
