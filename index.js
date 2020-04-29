@@ -83,7 +83,6 @@ function userPrompt() {
                 name: "githubUserName",
                 message: "What is your GitHub user name?"
             }
-
         ])
 
         .then(function (answers) {
@@ -108,18 +107,24 @@ function userPrompt() {
                             const emailAddress = responseEmail.data[0].payload.commits[0].author.email;
                             console.log(emailAddress);
 
+                            // const queryBadgeURL = `https://api.github.com/github/package-json/v/${answers.githubUserName}/${answers.title}`
+
+                            // return axios
+                            // .get(queryBadgeURL)
+                            // .then(function(responseBadge){
+                            //     console.log(responseBadge.data)
+
                             return { avatar, emailAddress, ...answers };
+
                         })
                         .catch(function (err) {
                             console.log(err);
                         })
-
                 })
         })
 }
 
-function generateReadMe(answers) {
-    console.log(answers)
+function generateReadMe({ author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName, avatar, emailAddress }) {
     return `#### Table
 * Table of Contents
 * [Author](#author)
@@ -136,47 +141,47 @@ function generateReadMe(answers) {
     
 ### Author
 
-The author of this project is: ${answers.author}
+The author of this project is: ${author}
 
 ### Title
 
-${answers.title}
+${title}
 
 ### Decription
 
-${answers.description}
+${description}
 
 ### Installation
 
-Install the project by doing the following: ${answers.installation}
+Install the project by doing the following: ${installation}
 
 ### Usage
 
-Usage: ${answers.usage}
+Usage: ${usage}
 
 ### License
 
-License: ${answers.license}
+License: ${license}
 
 ### Contributing
 
-Contributing: ${answers.contributing}
+Contributing: ${contributing}
 
 ### Tests
 
-Tests: ${answers.tests}
+Tests: ${tests}
 
 ### Picture
 
-${answers.picture === "Yes" ? `<img src="${answers.avatar}"/>` : ""}
+${picture === "Yes" ? `<img src="${avatar}"/>` : ""}
 
 ### Email
 
-${answers.email === "Yes" ? `${answers.emailAddress}` : ""}
+${email === "Yes" ? `${emailAddress}` : ""}
 
 ### Badge
 
-Badge: [![GitHub license](https://img.shields.io/badge/license-${answers.license.replace(" ", "")}-brightgreen.svg)](https://api.github.com/${answers.githubUserName}/${answers.title})
+[![GitHub license](https://img.shields.io/badge/license-${license.replace(" ", "")}-brightgreen.svg)](https://api.github.com/${githubUserName}/${title})
 `;
 }
 

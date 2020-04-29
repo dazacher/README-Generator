@@ -14,7 +14,7 @@
     
 ### Author
 
-The author of this project is: Dee Ann Scanniello
+The author of this project is: Dee Ann Scanniell
 
 ### Title
 
@@ -22,19 +22,19 @@ README-Generator
 
 ### Decription
 
-To come later
+The README-Generator is an app that takes information from the user and automatically generates a nicely formatted readme file as an end result. Information requested are things such as Author, Title of project, Description of project, Installation procedures, Usage, Licensing, ways of Contributing, Testing, as well as allowing the user to include a Profile picture and email address.
 
 ### Installation
 
-Install the project by doing the following: npm install
+Install the project by doing the following: Type npm install into the Terminal window.
 
 ### Usage
 
-Usage: Nome
+Usage: N/A
 
 ### License
 
-License: APACHE 2.0
+License: GPL 3.0
 
 ### Contributing
 
@@ -54,4 +54,4 @@ dazacher2000@yahoo.com
 
 ### Badge
 
-Badge: [![GitHub license](https://img.shields.io/badge/license-APACHE2.0-brightgreen.svg)](https://api.github.com/dazacher/README-Generator)
+[![GitHub license](https://img.shields.io/badge/license-GPL3.0-brightgreen.svg)](https://api.github.com/dazacher/README-Generator)
