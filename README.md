@@ -22,7 +22,7 @@ README-Generator
 
 ### Decription
 
-kdfaksfjskfjlfkd
+To come later
 
 ### Installation
 
@@ -30,7 +30,7 @@ Install the project by doing the following: npm install
 
 ### Usage
 
-Usage: None
+Usage: Nome
 
 ### License
 
@@ -50,8 +50,8 @@ Tests: None
 
 ### Email
 
-undefined
+dazacher2000@yahoo.com
 
 ### Badge
 
-Badge: [![GitHub license](https://img.shields.io/badge/license-APACHE 2.0-brightgreen.svg)](https://api.github.com/dazacher/README-Generator)
+Badge: [![GitHub license](https://img.shields.io/badge/license-APACHE2.0-brightgreen.svg)](https://api.github.com/dazacher/README-Generator)

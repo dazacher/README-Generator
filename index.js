@@ -4,8 +4,8 @@ const util = require("util");
 const axios = require("axios");
 
 const writeFileAsync = util.promisify(fs.writeFile);
-const answers = {};
-const { author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName } = answers;
+// const author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName;
+// const ({author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName} = { answers.author, answers.title, answers.description, answers.installation, answers.usage, answers.license, answers.contributing, answers.tests, answers.picture, answers.email, answers.githubUserName });
 function userPrompt() {
     return inquirer
         .prompt([
@@ -39,7 +39,8 @@ function userPrompt() {
                 name: "license",
                 message: "What kind of licensing would you like for your project?",
                 choices:
-                    ['MIT',
+                    [
+                        'MIT',
                         'APACHE 2.0',
                         'GPL 3.0',
                         'BSD3',
@@ -95,36 +96,30 @@ function userPrompt() {
                     // console.log(responseAvatar.data)
                     const avatar = responseAvatar.data.owner.avatar_url;
                     console.log(avatar);
-                    // /github/package-json/v/:user/:repo
 
-                    // const queryBadgeURL = `https://api.github.com/github/license/${answers.githubUserName}/${answers.title}`
-                    // return axios
-                    //     .get(queryBadgeURL)
-                    //     .then(function(responseBadge){
-                    //         console.log(responseBadge.data)
-                    //     })
-                    // Get the email address
-                    // const queryEmailURL = `curl -i https://api.github.com/${answers.githubUserName}/emails -u dazacher:St@rburst7756`
-                    // return axios
-                    //     .get(queryEmailURL)
-                    //     .then(function (responseEmail) {
-                    //         const email = responseEmail.data.email;
+
+                    const queryEmailURL = `https://api.github.com/users/${answers.githubUserName}/events/public`
+
+                    return axios
+                        .get(queryEmailURL)
+                        .then(function (responseEmail) {
+
                             // console.log(responseEmail.data);
-                    //         const emailAddress = responseEmail.data[0].actor.avatar_url;
-                    // return {emailAddress, ...answers};
+                            const emailAddress = responseEmail.data[0].payload.commits[0].author.email;
+                            console.log(emailAddress);
 
+                            return { avatar, emailAddress, ...answers };
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        })
 
-                    // return { avatar, email, ...answers };
-                    return { avatar, ...answers };
                 })
-
         })
 }
-// )
-// }
 
 function generateReadMe(answers) {
-    // console.log(answers)
+    console.log(answers)
     return `#### Table
 * Table of Contents
 * [Author](#author)
@@ -181,7 +176,7 @@ ${answers.email === "Yes" ? `${answers.emailAddress}` : ""}
 
 ### Badge
 
-Badge: [![GitHub license](https://img.shields.io/badge/license-${answers.license}-brightgreen.svg)](https://api.github.com/${answers.githubUserName}/${answers.title})
+Badge: [![GitHub license](https://img.shields.io/badge/license-${answers.license.replace(" ", "")}-brightgreen.svg)](https://api.github.com/${answers.githubUserName}/${answers.title})
 `;
 }
 
