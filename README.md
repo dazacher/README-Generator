@@ -14,7 +14,7 @@
     
 ### Author
 
-The author of this project is: Dee Ann Scanniell
+The author of this project is: Dee Ann Scanniello
 
 ### Title
 
@@ -26,11 +26,11 @@ The README-Generator is an app that takes information from the user and automati
 
 ### Installation
 
-Install the project by doing the following: Type npm install into the Terminal window.
+Install the project by doing the following: To install this app enter npm install at the Terminal prompt. This will install all the app dependencies.
 
 ### Usage
 
-Usage: N/A
+Use the app by doing the following: To use this app type node index.js at the Terminal prompt.
 
 ### License
 
@@ -38,11 +38,11 @@ License: GPL 3.0
 
 ### Contributing
 
-Contributing: None
+Contributing: The Author has chosen not to show contributing data.
 
 ### Tests
 
-Tests: None
+Tests: The Author has no tests to show.
 
 ### Picture
 

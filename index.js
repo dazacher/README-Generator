@@ -17,7 +17,16 @@ function userPrompt() {
             {
                 type: "input",
                 name: "title",
-                message: "What is the project title?"
+                message: "What is the project title?",
+                // validate: function vailidateProjectName(value) {
+
+                //     var pass = value.match(value !== "");
+
+                //     if (pass) {
+                //         return true;
+                //     }
+                //     return `Please enter a valid `
+                // }
             },
             {
                 type: "input",
@@ -96,7 +105,6 @@ function userPrompt() {
                     const avatar = responseAvatar.data.owner.avatar_url;
                     console.log(avatar);
 
-
                     const queryEmailURL = `https://api.github.com/users/${answers.githubUserName}/events/public`
 
                     return axios
@@ -107,24 +115,18 @@ function userPrompt() {
                             const emailAddress = responseEmail.data[0].payload.commits[0].author.email;
                             console.log(emailAddress);
 
-                            // const queryBadgeURL = `https://api.github.com/github/package-json/v/${answers.githubUserName}/${answers.title}`
-
-                            // return axios
-                            // .get(queryBadgeURL)
-                            // .then(function(responseBadge){
-                            //     console.log(responseBadge.data)
-
                             return { avatar, emailAddress, ...answers };
-
                         })
-                        .catch(function (err) {
-                            console.log(err);
-                        })
+                })
+                .catch(function (err) {
+                    console.log(err);
                 })
         })
 }
 
 function generateReadMe({ author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName, avatar, emailAddress }) {
+// function generateReadMe(answers) {
+//     console.log(answers);
     return `#### Table
 * Table of Contents
 * [Author](#author)
@@ -141,43 +143,43 @@ function generateReadMe({ author, title, description, installation, usage, licen
     
 ### Author
 
-The author of this project is: ${author}
+The author of this project is: ${author !== "" ? `${author}` : "The Author has chosen not to show their name."}
 
 ### Title
 
-${title}
+${title !== "" ? `${title}` : "The Author has chosen not to show a title."}
 
 ### Decription
 
-${description}
+${description !== "" ? `${description}` : "The Author has chosen not to show a description."}
 
 ### Installation
 
-Install the project by doing the following: ${installation}
+Install the project by doing the following: ${installation !== "" ? `${installation}` : "The Author has chosen not to explain how to install their app."}
 
 ### Usage
 
-Usage: ${usage}
+Use the app by doing the following: ${usage !== "" ? `${usage}` : "The Author has chosen not to describe how to use their app."}
 
 ### License
 
-License: ${license}
+License: ${license !== "" ? `${license}` : "The Author has chosen not to show their name."}
 
 ### Contributing
 
-Contributing: ${contributing}
+Contributing: ${contributing !== "" ? `${contributing}` : "The Author has chosen not to show contributing data."}
 
 ### Tests
 
-Tests: ${tests}
+Tests: ${tests !== "" ? `${author}` : "The Author has no tests to show."}
 
 ### Picture
 
-${picture === "Yes" ? `<img src="${avatar}"/>` : ""}
+${picture === "Yes" ? `<img src="${avatar}"/>` : "The Author has chosen not to show an image."}
 
 ### Email
 
-${email === "Yes" ? `${emailAddress}` : ""}
+${email === "Yes" ? `${emailAddress}` : "The Author has chosen not to show an email."}
 
 ### Badge
 
