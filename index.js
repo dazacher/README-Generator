@@ -14,6 +14,27 @@ function userPrompt() {
                 type: "input",
                 name: "githubUserName",
                 message: "What is your GitHub user name?",
+                // validate:
+                // async function validatesertName(value, userInput) {
+
+                //     const queryUserURL = `https://api.github.com/users`;
+
+                //     let responseUser = await axios
+                //         .get(queryUserURL)
+
+                //     userName = responseUser.data[0].login;
+
+                //     const userEqualToUserInput = responseUser.data.filter(function (userName) {
+                       
+                //         return (userName.name === value)
+                //     });
+                   
+                //     var pass = (userEqualToUserInput.length > 0);
+                //     if (pass) {
+                //         return true;
+                //     }
+                //     return `Please enter a valid Project name. The name ${value} does not match any in GitHubs database.`
+                // }
                 validate: function validateGitHubUserName(value) {
                     let userInput = value;
 
@@ -176,7 +197,7 @@ function generateReadMe({ author, title, description, installation, usage, licen
 * [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributing)
-* [Tests](#test)
+* [Tests](#tests)
 * Questions
     * [Picture](#picture) Due you want your profile picture?
     * [Email](#email) Do you want your GitHub email?
@@ -189,7 +210,7 @@ The author of this project is: ${author !== "" ? `${author}` : "The Author has c
 
 ${title !== "" ? `${title}` : "The Author has chosen not to show a title."}
 
-### Decription
+### Description
 
 ${description !== "" ? `${description}` : "The Author has chosen not to show a description."}
 
