@@ -167,8 +167,8 @@ function userPrompt() {
 function generateReadMe({ author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName, avatar, emailAddress }) {
     // function generateReadMe(answers) {
     //     console.log(answers);
-    return `#### Table
-* Table of Contents
+    return `#### Table of Contents
+
 * [Author](#author)
 * [Title](#title)
 * [Description](#description)
