@@ -3,12 +3,28 @@ const fs = require("fs");
 const util = require("util");
 const axios = require("axios");
 
+// define the write file as a promisify writefile
 const writeFileAsync = util.promisify(fs.writeFile);
-// const author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName;
-// const ({author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName} = { answers.author, answers.title, answers.description, answers.installation, answers.usage, answers.license, answers.contributing, answers.tests, answers.picture, answers.email, answers.githubUserName });
+
+// Get answers to all questions needed to populate the readme file. Validate as needed.
 function userPrompt() {
     return inquirer
         .prompt([
+            {
+                type: "input",
+                name: "githubUserName",
+                message: "What is your GitHub user name?",
+                validate: function validateGitHubUserName(value) {
+                    let userInput = value;
+
+                    var pass = (value !== "");
+
+                    if (pass) {
+                        return true;
+                    }
+                    return `Please enter a valid GitHub user name.`
+                }
+            },
             {
                 type: "input",
                 name: "author",
@@ -18,15 +34,27 @@ function userPrompt() {
                 type: "input",
                 name: "title",
                 message: "What is the project title?",
-                // validate: function vailidateProjectName(value) {
+                validate:
+                    async function validateProjectName(value, userInput) {
 
-                //     var pass = value.match(value !== "");
+                        const queryRepoURL = `https://api.github.com/users/${userInput.githubUserName}/repos`;
 
-                //     if (pass) {
-                //         return true;
-                //     }
-                //     return `Please enter a valid `
-                // }
+                        let responseRepo = await axios
+                            .get(queryRepoURL)
+
+                        repoName = responseRepo.data[0].name;
+
+                        const projectEqualToUserInput = responseRepo.data.filter(function (repoName) {
+                           
+                            return (repoName.name === value)
+                        });
+                       
+                        var pass = (projectEqualToUserInput.length > 0);
+                        if (pass) {
+                            return true;
+                        }
+                        return `Please enter a valid Project name. The name ${value} does not match any in your repository.`
+                    }
             },
             {
                 type: "input",
@@ -54,8 +82,10 @@ function userPrompt() {
                         'GPL 3.0',
                         'BSD3',
                         'None',
-                        'Other'
-                    ]
+                        new inquirer.Separator(),
+                        `Other`
+                    ],
+
             },
             {
                 type: "input",
@@ -86,21 +116,30 @@ function userPrompt() {
                         "Yes",
                         "No"
                     ]
-            },
-            {
-                type: "input",
-                name: "githubUserName",
-                message: "What is your GitHub user name?"
             }
         ])
-
         .then(function (answers) {
+            // async function vailidateLicense(value) {
+            //     var done = this.async();
+            //     console.log(value);
+            //     var pass = (value === "Other");
 
+            //     if (pass) {
+            //       let answers = await inquirer.prompt({
+            //             type: "input",
+            //             name: "other",
+            //             message: "Please enter the type of License you will be using.",})
+            //             // return true;
+            //         }
+            //         // return `Please enter a valid Project name.`
+            //         done(answers.other, true)
+            //         return
+            //     }
             const queryAvatarURL = `https://api.github.com/repos/${answers.githubUserName}/${answers.title}`;
 
             return axios
                 .get(queryAvatarURL)
-                .then(function (responseAvatar) {
+                .then((responseAvatar) => {
                     // console.log(responseAvatar.data)
                     const avatar = responseAvatar.data.owner.avatar_url;
                     console.log(avatar);
@@ -109,7 +148,7 @@ function userPrompt() {
 
                     return axios
                         .get(queryEmailURL)
-                        .then(function (responseEmail) {
+                        .then((responseEmail) => {
 
                             // console.log(responseEmail.data);
                             const emailAddress = responseEmail.data[0].payload.commits[0].author.email;
@@ -118,15 +157,16 @@ function userPrompt() {
                             return { avatar, emailAddress, ...answers };
                         })
                 })
-                .catch(function (err) {
+                .catch((err) => {
                     console.log(err);
                 })
         })
 }
 
+
 function generateReadMe({ author, title, description, installation, usage, license, contributing, tests, picture, email, githubUserName, avatar, emailAddress }) {
-// function generateReadMe(answers) {
-//     console.log(answers);
+    // function generateReadMe(answers) {
+    //     console.log(answers);
     return `#### Table
 * Table of Contents
 * [Author](#author)
@@ -163,11 +203,11 @@ Use the app by doing the following: ${usage !== "" ? `${usage}` : "The Author ha
 
 ### License
 
-License: ${license !== "" ? `${license}` : "The Author has chosen not to show their name."}
+License: ${license !== "" ? `${license}` : "The Author has not chosen any licensing."}
 
 ### Contributing
 
-Contributing: ${contributing !== "" ? `${contributing}` : "The Author has chosen not to show contributing data."}
+Contributing: ${contributing !== "" ? `${contributing}` : "There is no contributing data to show."}
 
 ### Tests
 
@@ -188,12 +228,12 @@ ${email === "Yes" ? `${emailAddress}` : "The Author has chosen not to show an em
 }
 
 userPrompt()
-    .then(function (answers) {
+    .then((answers) => {
         const readMe = generateReadMe(answers)
 
         return writeFileAsync("README.md", readMe);
     })
-    .then(function () {
+    .then(() => {
         console.log("Successfully wrote to README.md");
     })
     .catch(function (err) {
