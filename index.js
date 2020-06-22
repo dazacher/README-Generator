@@ -14,27 +14,7 @@ function userPrompt() {
                 type: "input",
                 name: "githubUserName",
                 message: "What is your GitHub user name?",
-                // validate:
-                // async function validatesertName(value, userInput) {
-
-                //     const queryUserURL = `https://api.github.com/users`;
-
-                //     let responseUser = await axios
-                //         .get(queryUserURL)
-
-                //     userName = responseUser.data[0].login;
-
-                //     const userEqualToUserInput = responseUser.data.filter(function (userName) {
-                       
-                //         return (userName.name === value)
-                //     });
-                   
-                //     var pass = (userEqualToUserInput.length > 0);
-                //     if (pass) {
-                //         return true;
-                //     }
-                //     return `Please enter a valid Project name. The name ${value} does not match any in GitHubs database.`
-                // }
+                
                 validate: function validateGitHubUserName(value) {
                     let userInput = value;
 
