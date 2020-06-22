@@ -1,3 +1,5 @@
+## README Generator
+
 #### Table of Contents
 
 * [Author](#author)
@@ -11,7 +13,7 @@
 * Questions
     * [Picture](#picture) Due you want your profile picture?
     * [Email](#email) Do you want your GitHub email?
-    
+
 ### Author
 
 The author of this project is: Dee Ann Scanniello

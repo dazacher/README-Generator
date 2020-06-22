@@ -140,22 +140,7 @@ function userPrompt() {
             }
         ])
         .then(function (answers) {
-            // async function vailidateLicense(value) {
-            //     var done = this.async();
-            //     console.log(value);
-            //     var pass = (value === "Other");
-
-            //     if (pass) {
-            //       let answers = await inquirer.prompt({
-            //             type: "input",
-            //             name: "other",
-            //             message: "Please enter the type of License you will be using.",})
-            //             // return true;
-            //         }
-            //         // return `Please enter a valid Project name.`
-            //         done(answers.other, true)
-            //         return
-            //     }
+           
             const queryAvatarURL = `https://api.github.com/repos/${answers.githubUserName}/${answers.title}`;
 
             return axios
