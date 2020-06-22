@@ -14,7 +14,7 @@ function userPrompt() {
                 type: "input",
                 name: "githubUserName",
                 message: "What is your GitHub user name?",
-                
+
                 validate: function validateGitHubUserName(value) {
                     let userInput = value;
 
@@ -46,10 +46,10 @@ function userPrompt() {
                         repoName = responseRepo.data[0].name;
 
                         const projectEqualToUserInput = responseRepo.data.filter(function (repoName) {
-                           
+
                             return (repoName.name === value)
                         });
-                       
+
                         var pass = (projectEqualToUserInput.length > 0);
                         if (pass) {
                             return true;
@@ -120,7 +120,7 @@ function userPrompt() {
             }
         ])
         .then(function (answers) {
-           
+
             const queryAvatarURL = `https://api.github.com/repos/${answers.githubUserName}/${answers.title}`;
 
             return axios
@@ -197,7 +197,7 @@ Contributing: ${contributing !== "" ? `${contributing}` : "There is no contribut
 
 ### Tests
 
-Tests: ${tests !== "" ? `${author}` : "The Author has no tests to show."}
+Tests: ${tests !== "" ? `${tests}` : "The Author has no tests to show."}
 
 ### Picture
 
