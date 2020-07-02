@@ -1,5 +1,3 @@
-## README Generator
-
 #### Table of Contents
 
 * [Author](#author)
@@ -13,38 +11,38 @@
 * Questions
     * [Picture](#picture) Due you want your profile picture?
     * [Email](#email) Do you want your GitHub email?
-
+    
 ### Author
 
 The author of this project is: Dee Ann Scanniello
 
 ### Title
 
-README-Generator
+Workout-Tracker
 
 ### Description
 
-The README-Generator is an app that takes information from the user and automatically generates a nicely formatted readme file as an end result. Information requested are things such as Author, Title of project, Description of project, Installation procedures, Usage, Licensing, ways of Contributing, Testing, as well as allowing the user to include a Profile picture and email address.
+As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
 
 ### Installation
 
-Install the project by doing the following: To install this app enter npm install at the Terminal prompt. This will install all the app dependencies.
+Install the project by doing the following: no installation required.
 
 ### Usage
 
-Use the app by doing the following: To use this app type node index.js at the Terminal prompt.
+Use the app by doing the following: When the user loads the page, they should be given the option to create a new workout, or continue with their last workout. The user should be able to: * Add exercises to a previous workout plan. * Add new exercises to a new workout plan. * View multiple the combined weight of multiple exercises on the `stats` page.
 
 ### License
 
-License: APACHE 2.0
+License: MIT
 
 ### Contributing
 
-Contributing: There is no contributing data to show.
+Contributing: Contributions are welcome as long as the MIT license rules are followed.
 
 ### Tests
 
-Tests: The Author has no tests to show.
+Tests: No tests for this application.
 
 ### Picture
 
@@ -56,4 +54,4 @@ dazacher2000@yahoo.com
 
 ### Badge
 
-[![GitHub license](https://img.shields.io/badge/license-APACHE2.0-brightgreen.svg)](https://api.github.com/dazacher/README-Generator)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://api.github.com/dazacher/Workout-Tracker)
