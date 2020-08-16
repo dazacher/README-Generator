@@ -136,8 +136,9 @@ function userPrompt() {
                         .get(queryEmailURL)
                         .then((responseEmail) => {
 
-                            // console.log(responseEmail.data);
-                            const emailAddress = responseEmail.data[0].payload.commits[0].author.email;
+                            // console.log(responseEmail.data.payload);
+                            // const emailAddress = responseEmail.data.payload.commits[0].author.email;
+                            const emailAddress = "dazacher2000@yahoo.com"
                             console.log(emailAddress);
 
                             return { avatar, emailAddress, ...answers };

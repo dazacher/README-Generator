@@ -1,5 +1,3 @@
-## README Generator
-
 #### Table of Contents
 
 * [Author](#author)
@@ -13,11 +11,10 @@
 * Questions
     * [Picture](#picture) Due you want your profile picture?
     * [Email](#email) Do you want your GitHub email?
-
     
 ### Author
 
-The author of this project is: Dee Ann Scanniello
+The author of this project is: The Author has chosen not to show their name.
 
 ### Title
 
@@ -25,16 +22,15 @@ README-Generator
 
 ### Description
 
-The README-Generator is an app that takes information from the user and automatically generates a nicely formatted readme file as an end result. Information requested are things such as Author, Title of project, Description of project, Installation procedures, Usage, Licensing, ways of Contributing, Testing, as well as allowing the user to include a Profile picture and email address.
-
+The Author has chosen not to show a description.
 
 ### Installation
 
-Install the project by doing the following: To install this app enter npm install at the Terminal prompt. This will install all the app dependencies.
+Install the project by doing the following: The Author has chosen not to explain how to install their app.
 
 ### Usage
 
-Use the app by doing the following: To use this app type node index.js at the Terminal prompt.
+Use the app by doing the following: The Author has chosen not to describe how to use their app.
 
 ### License
 
@@ -42,11 +38,11 @@ License: MIT
 
 ### Contributing
 
-Contributing: Contributions are welcome as long as the MIT license rules are followed.
+Contributing: There is no contributing data to show.
 
 ### Tests
 
-Tests: No tests for this application.
+Tests: The Author has no tests to show.
 
 ### Picture
 
