@@ -27,6 +27,8 @@ desert-pool-service
 
 This is a MERN stack application.  The app was designed for a local pool service, where the user wanted to have access to their customers online and have a polished, user friendly UI.  The user also wanted all CRUD API functionality. The user is able to create an account, login, view all customers, select a customer to view and update as needed. The customer view supports a Google map API of the customer’s address. The user can also add a new customer, or delete and existing one. If the customer address is updated, the Google map is updated with the new location.
 
+•	Tools/Languages Used: Node.js, Express.js, Mongo Atlas database, Mongoose, Auth0, Moment, CSS, HTML, Material Design Bootstrap for React, AOS (Animations on Scroll), React.js, API’s, Axios, JSON, Git Bash, GitHub, Heroku, Google Maps. 
+
 
 ### Installation
 
@@ -50,11 +52,11 @@ Tests are built into the app.
 
 ### Picture
 
-<img src="https://avatars3.githubusercontent.com/u/61209724?v=4"/>
+Due to COVID-19 global pandemic, no group picture is available.
 
 ### Email
 
-dazacher2000@yahoo.com
+Dee Ann: dazacher2000@yahoo.com, Bayar: rashadbayar@gmail.com, Denzell: denzgrant@gmail.com, Scott: scottmacd88@yahoo.com
 
 ### Badge
 
